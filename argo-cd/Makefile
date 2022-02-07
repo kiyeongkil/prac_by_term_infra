@@ -1,9 +1,12 @@
-upgrade-eks:
+upgrade:
 	helm upgrade -i argocd \
 	  -n argo \
 	  --create-namespace \
 	  -f values-eks.yaml \
 	  .
 
-template-eks:
+delete:
+	helm delete -n argo argocd
+
+template:
 	helm template -n argo -f values-eks.yaml argocd .

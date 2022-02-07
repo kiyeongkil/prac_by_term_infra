@@ -1,8 +1,8 @@
 upgrade:
-	helm upgrade -i -f values-eks.yaml demo .
+	helm upgrade -i -f values.yaml pbt .
 
 delete:
-	helm delete demo
+	helm delete pbt
 
 template:
-	helm template -f values-eks.yaml demo .
+	helm template -f values.yaml pbt .

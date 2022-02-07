@@ -21,6 +21,12 @@ server:
     - --insecure
   config:
     accounts.admin: apiKey, login
+    repositories: |
+      - url: https://github.com/kiyeongkil/prac_by_term_infra.git
+      - url: https://github.com/kiyeongkil/architecture.git
+
+  rbacConfig:
+    policy.default: role:readonly
 
 redis:
   enabled: true

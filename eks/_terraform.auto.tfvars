@@ -7,10 +7,10 @@ cluster_version = "1.21"
 cluster_endpoint_private_access = false
 cluster_endpoint_public_access = true
 
-worker_instance_type = "t3.nano"
+worker_instance_type = "t3.small"
 worker_instance_count = 2
 worker_instance_public_ip = true
-worker_key_name = "prod"
+worker_key_name = "pbt"
 
 trusted_role_services = ["ec2.amazonaws.com"]
 custom_role_policy_arns = [

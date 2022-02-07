@@ -1,5 +1,5 @@
 variable "backend_s3" {
-  default = "pbt-prod-tfbackend-s3"
+  default = "pbt-tfbackend-s3"
 }
 
 variable "region" {
