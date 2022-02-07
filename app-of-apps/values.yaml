@@ -1,0 +1,10 @@
+repoURL: 'https://github.com/kiyeongkil/prac_by_term_infra.git'
+apps:
+  - name: prac-by-term
+    project: default
+    namespace: default
+    source:
+      path: prac-by-term
+      customValues: true
+      values:
+        - values.yaml
