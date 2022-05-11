@@ -1,0 +1,57 @@
+installCRD: true
+
+controller:
+  replicas: 1
+
+repoServer:
+  replicas: 1
+
+server:
+  replicas: 1
+  service:
+    type: NodePort
+    namedTargetPort: false
+  ingress:
+    enabled: false
+  extraArgs:
+    - --insecure
+  config:
+    url: http://127.0.0.1:30080
+
+    repositories: |
+      - url: https://github.com/kiyeongkil/prac_by_term_infra.git
+
+    accounts.alice: apiKey, login
+
+    dex.config: |
+      connectors:
+        - type: github
+          id: github
+          name: GitHub
+          config:
+            clientID: 3156e8acff19746e9b6f
+            clientSecret: b8171fccec3fdf26901b3b5e6adf78ae8143604b
+            orgs:
+            - name: kky-argo
+
+  rbacConfig: {}
+    policy.default: role:readonly
+    policy.csv: |
+      p, role:local-user-admin, applications, *, */*, allow
+      g, alice, role: local-user-admin
+
+      p, role:org-devops, applications, *, */*, allow
+      p, role:org-devops, clusters, *, */*, allow
+      p, role:org-devops, repositories, *, *, allow
+      g, kky-argo:devops, role:org-devops
+
+      p, role:org-dev-BE, applications, get, */*, allow
+      p, role:org-dev-BE, clusters, get, */*, allow
+      p, role:org-dev-BE, repositories, get, *, allow
+      g, prac-by-term:dev-BE, role:org-dev-BE
+
+redis:
+  enabled: true
+
+redis-ha:
+  enabled: false

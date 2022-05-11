@@ -8,3 +8,19 @@ apps:
       customValues: true
       values:
         - values.yaml
+  - name: prometheus
+    project: default
+    namespace: prom
+    source:
+      path: prometheus
+      customValues: true
+      values:
+        - values-local.yaml
+  - name: grafana
+    project: default
+    namespace: grafana
+    source:
+      path: grafana
+      customValues: true
+      values:
+        - values-local.yaml
